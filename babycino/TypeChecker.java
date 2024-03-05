@@ -145,8 +145,7 @@ public class TypeChecker extends MiniJavaBaseListener {
 	
 	switch (op) {
 	   case "==":
-		   this.check(lhs.compatibleWith(rhs), ctx, " == Must have compatible types; actual types: "+lhs+","+rhs);
-		   this.types.push(new Type(Kind.BOOLEAN));
+		   this.check((lhs.isInt() && rhs.isInt()) || (lhs.isBoolean() && rhs.isBoolean()), ctx, " == Must have compatible types; actual types: "+lhs+","+rhs);
 		   break;
 	}
 
