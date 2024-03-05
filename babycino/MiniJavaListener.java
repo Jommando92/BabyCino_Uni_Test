@@ -274,6 +274,18 @@ public interface MiniJavaListener extends ParseTreeListener {
 	 */
 	void exitExpNewObject(MiniJavaParser.ExpNewObjectContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code ExpEquality}
+	 * labeled alternative in {@link MiniJavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpEquality(MiniJavaParser.ExpEqualityContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpEquality}
+	 * labeled alternative in {@link MiniJavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpEquality(MiniJavaParser.ExpEqualityContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code ExpGroup}
 	 * labeled alternative in {@link MiniJavaParser#expression}.
 	 * @param ctx the parse tree

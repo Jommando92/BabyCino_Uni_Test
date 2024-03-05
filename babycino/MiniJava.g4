@@ -40,6 +40,7 @@ expression :
   | expression ( '+' | '-' ) expression                                   # ExpBinOp
   | expression ( '<' ) expression                                         # ExpBinOp
   | expression ( '&&' ) expression                                        # ExpBinOp
+  | expression ( '==' ) expression					  # ExpEquality
   | INT        # ExpConstInt
   | 'true'     # ExpConstTrue
   | 'false'    # ExpConstFalse

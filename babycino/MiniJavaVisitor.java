@@ -167,6 +167,13 @@ public interface MiniJavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpNewObject(MiniJavaParser.ExpNewObjectContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code ExpEquality}
+	 * labeled alternative in {@link MiniJavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpEquality(MiniJavaParser.ExpEqualityContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code ExpGroup}
 	 * labeled alternative in {@link MiniJavaParser#expression}.
 	 * @param ctx the parse tree

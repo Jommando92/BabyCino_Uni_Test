@@ -142,6 +142,13 @@ public class TypeChecker extends MiniJavaBaseListener {
         Type rhs = this.types.pop();
         Type lhs = this.types.pop();
         String op = ctx.getChild(1).getText();
+	
+	switch (op) {
+	   case "==":
+		   this.check(lhs.compatibleWith(rhs), ctx, " == Must have compatible types; actual types: "+lhs+","+rhs);
+		   this.types.push(new Type(Kind.BOOLEAN));
+		   break;
+	}
 
         switch (op) {
             // AND is the only operator that takes booleans, not ints.
@@ -165,7 +172,7 @@ public class TypeChecker extends MiniJavaBaseListener {
             default:
                 this.types.push(new Type(Kind.INT));
                 break;
-        }
+	}
     }
 
     @Override
