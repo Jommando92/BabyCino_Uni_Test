@@ -143,12 +143,6 @@ public class TypeChecker extends MiniJavaBaseListener {
         Type lhs = this.types.pop();
         String op = ctx.getChild(1).getText();
 	
-	switch (op) {
-	   case "==":
-		   this.check((lhs.isInt() && rhs.isInt()) || (lhs.isBoolean() && rhs.isBoolean()), ctx, " == Must have compatible types; actual types: "+lhs+","+rhs);
-		   break;
-	}
-
         switch (op) {
             // AND is the only operator that takes booleans, not ints.
             case "&&":
