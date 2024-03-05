@@ -228,7 +228,7 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
         TACBlock expr2 = this.visit(ctx.expression(1));
 
         String op = ctx.getChild(1).getText();
-        if (op.equals("==")) {
+        if (op.equals("&&")) {
             // && should short-circuit.
             String end = this.genlab();
             String res = this.genreg();
