@@ -155,6 +155,9 @@ public class TypeChecker extends MiniJavaBaseListener {
                 this.check(lhs.isBoolean(), ctx, "Expected boolean as 1st argument to &&; actual type: " + lhs);
                 this.check(rhs.isBoolean(), ctx, "Expected boolean as 2nd argument to &&; actual type: " + rhs);
                 break;
+	    case "==":
+		this.check((lhs.isInt() && rhs.isInt()) || (lhs.isBoolean() && rhs.isBoolean()), ctx, " == Must have compatible types; actual types: "+lhs+","+rhs);
+		break;
             default:
                 this.check(lhs.isInt(), ctx, "Expected int as 1st argument to " + op + "; actual type: " + lhs);
                 this.check(rhs.isInt(), ctx, "Expected int as 2nd argument to " + op + "; actual type: " + rhs);
@@ -164,6 +167,7 @@ public class TypeChecker extends MiniJavaBaseListener {
         switch (op) {
             // Only AND and less-than return booleans;
             // all other operations return ints.
+	    case "==":
             case "&&":
             case "<":
                 this.types.push(new Type(Kind.BOOLEAN));
