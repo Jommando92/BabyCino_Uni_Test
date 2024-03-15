@@ -40,7 +40,7 @@ expression :
   | expression ( '+' | '-' ) expression                                   # ExpBinOp
   | expression ( '<' ) expression                                         # ExpBinOp
   | expression ( '&&' ) expression                                        # ExpBinOp
-  | expression ( '==' ) expression					  # ExpEquality
+  | expression ( '==' ) expression					                      # ExpBinOp
   | INT        # ExpConstInt
   | 'true'     # ExpConstTrue
   | 'false'    # ExpConstFalse
@@ -61,5 +61,3 @@ ALNUM : ALPHA | [0-9];
 
 WS : [ \t\r\n]+ -> skip ;
 COMMENT : '//' ~[\r\n]* -> skip ;
-
-
