@@ -244,6 +244,29 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
             return result;
         }
 
+		else if(op.equals("==")) {
+			String end = this.genlab();
+			String ifExpTrue = this.genlab();
+			String res = this.genreg();
+
+			result.addAll(expr1);
+			result.addAll(expr2);
+			result.add(TACOp.binop(res, expr1.getResult(), expr2.getResult(), TACOp.binopToCode("-")));
+			result.add(TACOp.jz(res, ifExpTrue));	
+			// res != 0 and is False
+			// set res to False and jump to the ENDLINE
+			result.add(TACOp.immed(res, 0));
+			result.add(TACOp.jmp(end));
+			// res = 0 = True
+			result.add(TACOp.label(ifExpTrue));
+			result.add(TACOp.immed(res, 1));
+			//END
+			result.add(TACOp.label(end));
+			
+			result.setResult(res);
+			return result;
+		}
+
         // Generate the correct code for the operation.
         int n = TACOp.binopToCode(op);
         result.addAll(expr1);
