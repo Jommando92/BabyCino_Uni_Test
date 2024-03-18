@@ -4,13 +4,15 @@ class TestBugG2 {
         System.out.println(new Test().f());
     }
 }
+
 class Test {
-     public int f() {
-          int x, y;
+    public int f() {
+        // Multiple variable declaration with incorrect type for the second variable
+        int x,y;
           y = true; // Assigning a boolean value to y
-          if (y);
-               return 1;
-          else
-               return 0;
-     }
+        if (y)
+            return 1;
+        else
+            return 0;
+    }
 }
